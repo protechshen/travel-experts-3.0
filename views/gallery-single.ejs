@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Travel Experts Gallery Specific</title>
+	
+	<%- include('./partials/css-global'); %>
+	<!-- gallery specific css stylesheet -->
+	<link rel="stylesheet" href="css/gallery.css">
+	
+</head>
+<body>
+	<!-- Header & Navbar-->
+	<%- include('./partials/header'); %>
+    
+  <div class="full-vh center-items">
+    <figure>
+      <img src="http://picsum.photos/id/<%= id %>/600" alt="<%= altText %>">
+			<figcaption><%= description %>!</figcaption>
+			<a href="<%= linkURL %>" target="blank"><p>Learn more here (link to an external website)</p></a>
+    </figure> 
+	</div>
+    
+  <!-- Footer -->
+	<%- include('./partials/footer'); %>
+    
+  <!-- JS to toggle hamburger menu -->
+	<%- include('./partials/js-toggle'); %> 
+	
+  <!-- JS with array of image information (object)  -->
+	<%- include('./partials/js-browser'); %> 
+	
+</body>
+</html>

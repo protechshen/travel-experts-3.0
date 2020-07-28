@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Travel Experts Gallery</title>
+	
+	<%- include('./partials/css-global'); %>
+	<!-- gallery specific css stylesheet -->
+	<link rel="stylesheet" href="css/gallery.css">
+	
+</head>
+<body>
+	<!-- Header & Navbar-->
+	<%- include('./partials/header'); %>
+    
+  <!-- Destinations Gallery-->
+  <div class="gallery">
+    <!-- The gallery will go here. See gallery.js to see how that happens. -->
+  </div>
+    
+  <!-- Footer -->
+	<%- include('./partials/footer'); %>
+    
+  <!-- JS to toggle hamburger menu -->
+  <%- include('./partials/js-toggle'); %> 
+  
+  <!-- JS with array of image information (object) and gallery display -->
+	<%- include('./partials/js-browser'); %> 
+  
+	
+</body>
+</html>
