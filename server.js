@@ -5,6 +5,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv').config();
 const moment = require('moment');
+const cors = require('cors');
 
 // Models
 const TravelGoal = require('./models/travelGoal.js');
@@ -25,6 +26,13 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 db.once('open', function() {
   console.log('Connected to DB...');
 });
+
+// cors origin URL - Allow inbound traffic from origin
+corsOptions = {
+  origin: "https://dashboard.heroku.com",
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+};
+app.use(cors(corsOptions));
 
 // create express app
 const app = express();
@@ -56,18 +64,17 @@ app.get('/gallery', function(request, response){
 })
 
 // Define an endpoint handler for the individual travelGoal pages
-// https://expressjs.com/en/api.html#req.params
 app.get('/:id', function(request, response){
 
   // model.findOne returns the first object it finds
   // model.find will always return an array, even if it only finds one 
   TravelGoal.findOne({'id': request.params.id}, function(error, travelGoal) {
-  
+  // The above find() method returns the object that matches by ID
   // Check for IDs that are not in our list
   if (!travelGoal) {
     response.render('404',{title:"404"});
   } else {
-  // The above find() method returns the object that matches by ID
+
   // Now pass the travelGoal object into our view (the 2nd object must be an object)
   response.render('gallery-single',travelGoal);
   }
