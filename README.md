@@ -37,6 +37,8 @@ Future Improvements:
 - found out that if I remove the CORS code the website would deploy but my homepage looping gallery would not work and the error was a CORS error
 - checked my browser.js, env file, package.json, and server.js and could not find the issue
 
+- also tried to lower case my "travelGoals" since it was suggested heroku or MongoDB did not like capital letter. However, I did try this last weekend and it broke my code.
+
 Decided to remove the CORS code and at have the website without the gallery
 
 
