@@ -29,7 +29,7 @@ db.once('open', function() {
 
 // cors origin URL - Allow inbound traffic from origin
 corsOptions = {
-  origin: "https://dashboard.heroku.com",
+  origin: "https://json-byters.heroku.com",
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 };
 app.use(cors(corsOptions));
@@ -49,19 +49,19 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Define an endpoint handler for the home page 
 app.get('/', function(request, response){
   response.render('index',{});
-})
+});
 
 app.get('/login', function(request, response){
   response.render('login');
-})
+});
 
 app.get('/register', function(request, response){
   response.render('register');
-})
+});
 
 app.get('/gallery', function(request, response){
   response.render('gallery');
-})
+});
 
 // Define an endpoint handler for the individual travelGoal pages
 app.get('/:id', function(request, response){
@@ -72,14 +72,16 @@ app.get('/:id', function(request, response){
   // The above find() method returns the object that matches by ID
   // Check for IDs that are not in our list
   if (!travelGoal) {
-    response.render('404',{title:"404"});
-  } else {
+  //   response.render('404',{title:"404"});
+  // } else {
+    return response.send('Invalid ID.');
+  }
 
   // Now pass the travelGoal object into our view (the 2nd object must be an object)
   response.render('gallery-single',travelGoal);
-  }
+  // }
   });
-})
+});
 
 // Create a JSON (no EJS here) that returns the entire travelGoal JSON
 // This is the endpoint that the frontend gallery script calls (see: ./public/js/browser.js).
@@ -89,7 +91,7 @@ app.get('/api/travelGoals', function(request, response){
     response.json(travelGoals);
   });
 
-})
+});
 
 // if no file or endpoint found, send a 404 error as a response to the browser
 app.use(function(req, res, next) {
