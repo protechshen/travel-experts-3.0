@@ -5,7 +5,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv').config();
 const moment = require('moment');
-const cors = require('cors');
+// const cors = require('cors');
 
 // Models
 const TravelGoal = require('./models/travelGoal.js');
@@ -28,11 +28,11 @@ db.once('open', function() {
 });
 
 // cors origin URL - Allow inbound traffic from origin
-corsOptions = {
-  origin: "https://json-byters.herokuapp.com",
-  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-};
-app.use(cors(corsOptions));
+// corsOptions = {
+//   origin: "https://json-byters.herokuapp.com",
+//   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+// };
+// app.use(cors(corsOptions));
 
 // create express app
 const app = express();
