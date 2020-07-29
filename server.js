@@ -72,9 +72,9 @@ app.get('/:id', function(request, response){
   // The above find() method returns the object that matches by ID
   // Check for IDs that are not in our list
   if (!travelGoal) {
-  //   response.render('404',{title:"404"});
-  // } else {
-    return response.send('Invalid ID.');
+    response.render('404',{title:"404"});
+  } else {
+    // return response.send('Invalid ID.');
   }
 
   // Now pass the travelGoal object into our view (the 2nd object must be an object)
